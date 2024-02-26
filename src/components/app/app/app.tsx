@@ -1,4 +1,4 @@
-import WelcomeScreen from '../../pages/welcome-screen/welcome-screen';
+import WelcomeScreen from '../../../pages/welcome-screen/welcome-screen';
 
 type AppScreenProps = {
   favoritesCount: number;
@@ -16,5 +16,4 @@ function App({
     />
   );
 }
-
 export default App;
