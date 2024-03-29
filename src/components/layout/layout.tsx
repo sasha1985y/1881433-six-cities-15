@@ -1,10 +1,16 @@
-import { Outlet, useLocation, Link } from "react-router-dom";
+import { Outlet, useLocation, Link } from 'react-router-dom';
 
-import { AppRoute, AuthorizationStatus } from "../../const";
-import { getLayoutState } from "../../utils";
-import { getAuthorizationStatus } from "../../authorizationStatus";
+import { AppRoute, AuthorizationStatus } from '../../const';
+import { getLayoutState } from '../../utils';
+import { getAuthorizationStatus } from '../../authorizationStatus';
 
-export default function Layout() {
+type LayoutProps = {
+  favouriteCount: number;
+}
+
+function Layout({
+  favouriteCount
+}: LayoutProps): JSX.Element {
   const { pathname } = useLocation();
   const { rootClassName, linkClassName, shouldRenderUser, shouldRenderFooter } = getLayoutState(pathname as AppRoute);
   const authorizationStatus = getAuthorizationStatus();
@@ -25,13 +31,14 @@ export default function Layout() {
                   <ul className="header__nav-list">
                     <li className="header__nav-item user">
                       <Link className="header__nav-link header__nav-link--profile"
-                        to={AppRoute.Favourite}>
+                        to={AppRoute.Favourite}
+                      >
                         <div className="header__avatar-wrapper user__avatar-wrapper">
                         </div>
                         {authorizationStatus === AuthorizationStatus.Auth ? (
                           <>
                             <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
-                            <span className="header__favorite-count">3</span>
+                            <span className="header__favorite-count">{favouriteCount}</span>
                           </>
                         ) : <span className="header__signout">Sign in</span>}
                       </Link>
@@ -58,8 +65,9 @@ export default function Layout() {
               <img className="footer__logo" src="img/logo.svg" alt="6 cities logo" width="64" height="33" />
             </a>
           </footer>
-        ) : null
-      }
+        ) : null}
     </div>
-  )
+  );
 }
+
+export default Layout;

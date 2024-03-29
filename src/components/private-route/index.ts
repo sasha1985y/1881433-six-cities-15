@@ -1,2 +1,2 @@
-import PrivateRoute from "./private-route";
+import PrivateRoute from './private-route';
 export default PrivateRoute;

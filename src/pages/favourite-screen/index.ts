@@ -1,2 +1,2 @@
-import FavouriteScreen from "./favourite-screen";
+import FavouriteScreen from './favourite-screen';
 export default FavouriteScreen;

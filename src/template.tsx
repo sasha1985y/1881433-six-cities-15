@@ -1,7 +1,7 @@
-function template(): JSX.Element {
+/*function template(): JSX.Element {
     return (
         <></>
     );
 }
 
-export default template;
+export default template;*/

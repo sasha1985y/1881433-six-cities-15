@@ -2,12 +2,10 @@ import Card from '../../components/card/card';
 import { Helmet } from 'react-helmet-async';
 
 type WelcomeScreenProps = {
-  favouriteCount: number;
   placesFound: number;
 }
 
 function WelcomeScreen({
-  favouriteCount,
   placesFound
 }: WelcomeScreenProps): JSX.Element {
   return (

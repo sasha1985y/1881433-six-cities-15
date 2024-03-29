@@ -1,7 +1,7 @@
 import { Route, BrowserRouter, Routes } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 
-import { AppRoute, AuthorizationStatus } from '../../const';
+import { AppRoute } from '../../const';
 import { getAuthorizationStatus } from '../../authorizationStatus';
 
 import PrivateRoute from '../private-route';
@@ -29,13 +29,12 @@ function App({
         <Routes>
           <Route
             path={AppRoute.Root}
-            element={<Layout />}
+            element={<Layout favouriteCount={favouriteCount} />}
           >
             <Route
               index
               element={
                 <WelcomeScreen
-                  favouriteCount={favouriteCount}
                   placesFound={placesFound}
                 />
               }
@@ -44,7 +43,8 @@ function App({
               path={AppRoute.Favourite}
               element={(
                 <PrivateRoute
-                  authorizationStatus={authorizationStatus}>
+                  authorizationStatus={authorizationStatus}
+                >
                   <FavouriteScreen />
                 </PrivateRoute>
               )}
@@ -53,7 +53,8 @@ function App({
               path={AppRoute.Login}
               element={(
                 <PrivateRoute
-                  authorizationStatus={authorizationStatus} isReverse>
+                  authorizationStatus={authorizationStatus} isReverse
+                >
                   <LoginScreen />
                 </PrivateRoute>
               )}
@@ -67,8 +68,7 @@ function App({
             <Route
               path="*"
               element={
-                <NotFoundScreen
-                />
+                <NotFoundScreen/>
               }
             />
           </Route>

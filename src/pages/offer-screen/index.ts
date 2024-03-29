@@ -1,2 +1,2 @@
-import OfferScreen from "./offer-screen";
+import OfferScreen from './offer-screen';
 export default OfferScreen;
